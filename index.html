@@ -229,7 +229,7 @@
       <section class="interest" id="interest-section">
         <div class="interest__box">
           <div class="interest__item">
-            <div>청약자 이름 :</div>
+            <div>이름 :</div>
             <input
               type="text"
               id="name"
@@ -239,7 +239,7 @@
             />
           </div>
           <div class="interest__item">
-            <div>청약자 연락처 :</div>
+            <div>연락처 :</div>
             <input
               type="text"
               id="phone"
@@ -249,7 +249,7 @@
             />
           </div>
           <div class="interest__item">
-            <div>청약자 생년월일(6자리) ex.880630 :</div>
+            <div>생년월일(6자리) ex.880630 :</div>
             <input
               type="text"
               id="birth"
@@ -295,7 +295,7 @@
       var database = firebase.database();
 
       function writeUserData(value) {
-        firebase.database().ref("users/").set(value);
+        firebase.database().ref("users/").push(value);
         alert("등록이 완료되었습니다. 곧 연락드릴게요.");
       }
 
@@ -326,7 +326,6 @@
 
           // 예시 값
           const value = name + phone + birth;
-
           writeUserData(value);
         }
         // 두 버튼에 동일한 이벤트 리스너 추가
