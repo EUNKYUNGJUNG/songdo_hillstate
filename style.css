@@ -8,6 +8,10 @@ body {
   justify-content: center;
 }
 
+.main-title {
+  font-size: 51px;
+}
+
 .responsive-image {
   width: 65%;
   height: auto;
@@ -197,6 +201,9 @@ body {
     --font-micro: 12px;
   }
 
+  .main-title {
+    font-size: 25px;
+  }
   .responsive-image {
     width: 100%;
     height: auto;
