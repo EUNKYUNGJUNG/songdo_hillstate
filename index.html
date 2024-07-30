@@ -145,6 +145,7 @@
             <div style="margin-bottom: 15px">
               <textarea
                 style="height: 198px; width: 100%"
+                id="request-text"
                 placeholder="추가문의 내용을 적어주세요."
               ></textarea>
             </div>
@@ -175,7 +176,7 @@
             <div>이름 :</div>
             <input
               type="text"
-              id="name"
+              id="name2"
               name="name"
               placeholder="성함(필수)"
               class="input-item"
@@ -185,7 +186,7 @@
             <div>연락처 :</div>
             <input
               type="text"
-              id="phone"
+              id="phone2"
               name="phone"
               placeholder="연락처(필수)"
               class="input-item"
@@ -195,7 +196,7 @@
             <div>생년월일(6자리) ex.880630 :</div>
             <input
               type="text"
-              id="birth"
+              id="birth2"
               name="birth"
               placeholder="생년월일(필수)"
               class="input-item"
@@ -314,32 +315,53 @@
         const submitBtn = document.getElementById("submit-btn-big");
         const submitBtnSmall = document.getElementById("submit-btn-small");
 
-        function handleSubmit() {
-          const agreeOneRadio = document.getElementById("agree1");
-          const agreeTwoRadio = document.getElementById("agree2");
-          const name = document.getElementById("name").value;
-          const phone = document.getElementById("phone").value;
-          const birth = document.getElementById("birth").value;
-
-          // 약관 동의 확인
-          if (!agreeOneRadio.checked && !agreeTwoRadio.checked) {
-            alert("약관에 동의가 필요합니다.");
-            return;
+        function handleSubmit(event) {
+          let name, phone, birth;
+          const requestText = document.getElementById("request-text").value;
+          if (event.target === submitBtn) {
+            name = document.getElementById("name").value;
+            phone = document.getElementById("phone").value;
+            birth = document.getElementById("birth").value;
+          } else if (event.target === submitBtnSmall) {
+            name = document.getElementById("name2").value;
+            phone = document.getElementById("phone2").value;
+            birth = document.getElementById("birth2").value;
           }
+
+          // 필수 입력 값 확인
           if (
             name.trim() === "" ||
             phone.trim() === "" ||
             birth.trim() === ""
           ) {
             alert("모든 필수 입력 항목을 작성해 주세요.");
-            return false;
+            return;
           }
 
-          // 예시 값
-          const value = name + phone + birth;
+          // 약관 동의 확인
+          let agreeRadio;
+          if (event.target === submitBtn) {
+            agreeRadio = document.getElementById("agree1");
+          } else if (event.target === submitBtnSmall) {
+            agreeRadio = document.getElementById("agree2");
+          }
+
+          if (!agreeRadio.checked) {
+            alert("약관에 동의가 필요합니다.");
+            return;
+          }
+
+          // 값 준비
+          const value = name + phone + birth + requestText;
+
+          // Firebase에 저장
           writeUserData(value);
+
+          // 저장 후 처리 (예를 들어 모달 닫기 등)
+          //   const interestSection = document.getElementById("interest-section");
+          //   interestSection.style.display = "none";
         }
-        // 두 버튼에 동일한 이벤트 리스너 추가
+
         submitBtn.addEventListener("click", handleSubmit);
         submitBtnSmall.addEventListener("click", handleSubmit);
       });
