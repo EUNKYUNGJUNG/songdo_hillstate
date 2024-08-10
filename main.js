@@ -131,7 +131,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   const testBtn = document.getElementById("test-btn");
+  const testBtn2 = document.getElementById("test-btn2");
   const interestSection = document.getElementById("interest-section");
+
+  testBtn2.addEventListener("click", function () {
+    interestSection.style.display = "none";
+  });
 
   testBtn.addEventListener("click", function () {
     if (window.innerWidth <= 600) {

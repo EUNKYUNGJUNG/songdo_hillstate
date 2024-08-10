@@ -204,8 +204,37 @@
       </footer>
 
       <!-- 플로팅 -->
-      <section class="interest" id="interest-section">
+      <section
+        class="interest"
+        id="interest-section"
+        style="position: relative"
+      >
         <div class="interest__box">
+          <button
+            type="button"
+            id="test-btn2"
+            style="
+              position: absolute;
+              top: 20px;
+              right: 20px;
+              border-radius: 50px;
+              border: none;
+              background-color: #081b17;
+              color: white;
+            "
+          >
+            x
+          </button>
+          <div
+            style="
+              text-align: center;
+              margin-bottom: 20px;
+              font-size: 18px;
+              font-weight: 700;
+            "
+          >
+            관심고객등록
+          </div>
           <div class="interest__item">
             <div>이름 :</div>
             <input
@@ -244,24 +273,24 @@
             <div>
               <input
                 type="radio"
-                id="gender-male"
+                id="gender-male2"
                 name="gender2"
                 value="남자"
               />
-              <label for="gender-male">남자</label>
+              <label for="gender-male2">남자</label>
             </div>
             <div>
               <input
                 type="radio"
-                id="gender-female"
+                id="gender-female2"
                 name="gender2"
                 value="여자"
               />
-              <label for="gender-female">여자</label>
+              <label for="gender-female2">여자</label>
             </div>
           </div>
           <div class="interest__item">
-            <div>거주지:</div>
+            <div>거주지 (ex. OO시 OO구 OO동) :</div>
             <input
               type="text"
               id="address2"
