@@ -90,8 +90,15 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // 현재 시간 가져오기
+    const now = new Date();
+    const formattedTime = now.toLocaleString("ko-KR", {
+      timeZone: "Asia/Seoul",
+    });
+
     // 값 준비
-    const value = name + phone + birth + gender + address + requestText;
+    const value =
+      name + phone + birth + gender + address + requestText + formattedTime;
 
     // Firebase에 저장
     writeUserData(value);
